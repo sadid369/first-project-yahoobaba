@@ -13,28 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::prefix('page')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('home');
+    Route::get('posts', function () {
+        return view('post');
+    })->name('mypost');
+    Route::get('/test', function () {
+        return view('about');
+    })->name('about');
+    
 });
-Route::get('/post/{id}/c/{c}', function (string $id, string $c) {
-    // return view('post');
-    if($id){
-     
-        return "<h1>Post ID:".$id."</h1> <h2>comment ".$c."</h2> ";
-    }else{
-        return "<h1>No Id Found</h1>";
 
-    }
-    
-    
-})->whereNumber('id')->whereAlpha('c');
-// })->where('id',"[0-9]+")->whereAlpha('c');
+Route::redirect('/about', '/test',301);
 
-
-
-
-
-
+Route::fallback(function (){
+    return "<h1>Page not found</h1>";
+});
 
 
 
