@@ -14,41 +14,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::prefix('page')->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('home');
-    Route::get('posts', function () {
-        return view('post');
-    })->name('mypost');
-    Route::get('/test', function () {
-        return view('about');
-    })->name('about');
-    
+
+
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::redirect('/about', '/test',301);
-
-Route::fallback(function (){
-    return "<h1>Page not found</h1>";
+Route::get('/post', function () {
+    return view('post');
+});
+Route::get('/about', function () {
+    return view('about');
+});
+Route::get('/test', function () {
+    return view('test');
 });
 
 
 
 
 
-
-
-
-
-
-// Route::get('/post/first', function () {
-//     return view('first-post');
-    
-// });
-
-// Route::view('/post','post');
-
-// Route::get('/hello', function () {
-//     return view('post');
-// });

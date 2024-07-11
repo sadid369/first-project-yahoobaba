@@ -1,5 +1,8 @@
-<h1>About Page</h1>
+@extends('layout');
 
-<a href="{{ route('home') }}">Home Page</a>
-<br>
-<a href="{{ route('mypost') }}">Post Page</a>
+@section('title')
+    About
+@endsection
+@section('content')
+    <h1>About Page</h1>
+@endsection
